@@ -25,20 +25,23 @@
 .card-tag {
   box-sizing: border-box;
   width: 300px;
-  padding: 0px 20px;
+  margin-bottom: 5px;
+  padding: 0px 10px;
   font-size: 10px;
 }
 
 .card-title {
   box-sizing: border-box;
   width: 300px;
-  padding: 0px 20px;
+  margin-top: 5px;
+  padding: 0px 10px;
   font-size: 14px;
 }
 
 .card-content {
-  box-sizing: border-box;
   width: 300px;
-  padding: 0px 20px;
-  font-size: 8px;
+  padding: 0px 10px;
+  font-size: 10px;
+  color: gray;
+  word-spacing: -1px;
 }
