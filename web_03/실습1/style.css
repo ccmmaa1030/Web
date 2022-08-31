@@ -1,0 +1,47 @@
+.top {
+  width: 900px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.card {
+  width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.each-card {
+  width: 300px;
+  margin: 10px;
+}
+
+.card-img {
+  box-sizing: border-box;
+  width: 300px;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.card-tag {
+  box-sizing: border-box;
+  width: 300px;
+  margin-bottom: 5px;
+  padding: 0px 10px;
+  font-size: 10px;
+}
+
+.card-title {
+  box-sizing: border-box;
+  width: 300px;
+  margin-top: 5px;
+  padding: 0px 10px;
+  font-size: 14px;
+}
+
+.card-content {
+  width: 300px;
+  padding: 0px 10px;
+  font-size: 10px;
+  color: grey;
+  word-spacing: -1px;
+}
