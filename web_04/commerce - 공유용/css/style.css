@@ -33,12 +33,20 @@ body {
 .main-nav-li {
   display: inline-block;
   box-sizing: border-box;
-  padding: 0.5rem;
+  line-height: 2rem;
+}
+
+.main-nav-link {
+  box-sizing: border-box;
+  padding: 0.4rem;
+  text-decoration: none;
+  color: #333333;
 }
 
 .main-nav-link:hover {
   color: white;
   background-color: black;
+  border-radius: 1rem;
 }
 
 .banner {
