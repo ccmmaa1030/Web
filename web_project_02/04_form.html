@@ -17,7 +17,12 @@
       href="https://fonts.googleapis.com/css2?family=Sunflower&display=swap"
       rel="stylesheet"
     />
-    <title>0913실습1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="0914.css" />
+    <title>0914실습4</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -148,6 +153,89 @@
         </div>
       </div>
     </nav>
+    <!-- 리뷰작성 -->
+    <div class="container mt-5 mb-0">
+      <h1 class="text-center mb-3">리뷰 작성하기</h1>
+      <form class="px-3">
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>영화 선택하기</option>
+            <option value="1">Monsters University</option>
+            <option value="2">CoCo</option>
+            <option value="3">Toy Story</option>
+            <option value="4">Minions2</option>
+            <option value="5">Boss Baby</option>
+            <option value="6">Guardians</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">
+            리뷰 제목
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="리뷰를 작성해주세요."
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">
+            리뷰 내용
+          </label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio1"
+              autocomplete="off"
+              checked
+            />
+            <label class="btn btn-outline-warning" for="btnradio1">
+              <i class="bi bi-star-fill"></i>
+            </label>
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio2"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-warning" for="btnradio2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </label>
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio3"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-warning" for="btnradio3">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-secondary ms-3">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
     <!-- 푸터 -->
     <footer>
       <p class="text-center py-4">Web-bootstrap PJT,by CMA KYJ</p>
