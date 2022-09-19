@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="text-input">
+  <p id="typing">검색결과</p>
+  <script>
+    let content = ''
+
+    // 1. input 선택
+    const textInput = document.querySelector('#text-input')
+    // 2. input 이벤트 등록
+    textInput.addEventListener('input', function(e) {
+      // input의 value를 받아오고 싶음
+      // input은 이벤트의 대상!
+      console.log(e)
+      console.log(e.target.value)
+
+      // 3. 그대로 출력하기
+      // id가 typing인 태그의 내용을 변경한 채로 출력
+      const typing = document.querySelector('#typing')
+      typing.innerText = event.target.value
+    })
+
+  </script>
+</body>
+</html>

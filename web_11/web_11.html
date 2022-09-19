@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    hr {
+      width: 35rem;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    input {
+      width: 30rem;
+      margin-bottom: 1rem;
+      line-height: 2;
+    }
+    button {
+      line-height: 2;
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100vh;
+      /* 기본 안보임 */
+      display: none;
+    }
+    .modal {
+      display: flex;
+    }
+    .carousel-items {
+      position: relative;
+      display: flex;
+      width: 10rem;
+      height: 10rem;
+      overflow: hidden;
+    }
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      width: 10rem;
+      height: 10rem;
+      background-color: gray;
+      color: white;
+      text-align: center;
+      display: none;
+    }
+    .carousel-btns {
+      display: flex;
+      width: 10rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .active {
+      display: block;
+      animation: active 1.5s;
+    }
+    @keyframes active {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>input</h1>
+    <input type="text" id="text-input" placeholder="텍스트를 입력하세요.">
+    <input type="text" id="typing" placeholder="입력결과 확인" disabled>
+  </div>
+  <hr>
+  <div>
+    <h1>modal</h1>
+    <button id="modal-btn">모달 버튼</button>
+    <div id="modal-content" class="modal-overlay">
+      <button id="modal-cancel-btn">취소 버튼</button>
+    </div>
+  </div>
+  <hr>
+  <div >
+    <h1>carousel</h1>
+    <div class="carousel-items">
+      <div class="carousel-item active">1</div>
+      <div class="carousel-item">2</div>
+      <div class="carousel-item">3</div>
+      <div class="carousel-item">4</div>
+    </div>
+    <div class="carousel-btns">
+      <button id="previousBtn">이전 버튼</button>
+      <button id="nextBtn">다음 버튼</button>
+    </div>
+  </div>
+  <hr>
+  <form>
+    <div>
+      <h1>password</h1>
+      <input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요.">
+      <input type="password" name="password_confirmation" id="password_confirmation" placeholder="비밀번호 확인">
+      <button id="password-btn">확인 버튼</button>
+    </div>
+  </form>
+
+  <script>
+    // 1. input 선택
+    const textInput = document.querySelector('#text-input')
+    // 2. input 이벤트 등록
+    textInput.addEventListener('input', function() {
+      // input의 value 받아옴
+      console.log(textInput.value)
+      // 3. 그대로 출력하기
+      // id가 typing인 태그의 내용을 변경한 채로 출력
+      const typing = document.querySelector('#typing')
+      typing.value = textInput.value
+    })
+
+    // modal Toggle 함수
+    const modalToggle = function() {
+      document.querySelector('#modal-content').classList.toggle('modal')
+    }
+    // 1. modal 버튼 클릭
+    const modalBtn = document.querySelector('#modal-btn')
+    modalBtn.addEventListener('click', modalToggle)
+    // 2. modal 취소 버튼 클릭 
+    const modalCancelBtn = document.querySelector('#modal-cancel-btn')
+    modalCancelBtn.addEventListener('click', modalToggle)
+
+    // 1. 이전 버튼 클릭
+    const previousBtn = document.querySelector('#previousBtn')
+    previousBtn.addEventListener('click', function() {
+      const currentElement = document.querySelector('.active')
+      // 모든 item 선택
+      const items = document.querySelectorAll('.carousel-item')
+      // 현재 item의 인덱스
+      const idx = [...items].indexOf(currentElement)
+      currentElement.classList.toggle('active')
+      // 이전 item
+      items[(idx+3)%items.length].classList.toggle('active')
+    })
+    // 2. 다음 버튼 클릭
+    const nextBtn = document.querySelector('#nextBtn')
+    nextBtn.addEventListener('click', function() {
+      const currentElement = document.querySelector('.active')
+      // 모든 item 선택
+      const items = document.querySelectorAll('.carousel-item')
+      // 현재 item의 인덱스
+      const idx = [...items].indexOf(currentElement)
+      currentElement.classList.toggle('active')
+      // 다음 item
+      items[(idx+1)%items.length].classList.toggle('active')
+    })
+
+    // 1. 확인 버튼 클릭
+    const passwordBtn = document.querySelector('#password-btn')
+    passwordBtn.addEventListener('click', function() {
+      // 2. password, password_confirmation value 받아옴
+      const passwordInput = document.getElementById('password').value;
+      const confirmationInput = document.getElementById('password_confirmation').value;
+      // 3. 비밀번호가 8자리 미만일 때
+      if(passwordInput.length < 8) {
+        alert("비밀번호는 8자리 이상이어야 합니다.");
+      }
+      // 4. 비밀번호가 일치하지 않을 때
+      if(passwordInput != confirmationInput) {
+        alert("비밀번호가 일치하지 않습니다.");
+      }
+    })
+  </script>
+</body>
+</html>
+
