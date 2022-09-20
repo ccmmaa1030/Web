@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 번호 추첨기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+    body {
+      background-color: lightblue;
+      font-family: 'Do Hyeon', sans-serif;
+    }
+    .basic {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .ball {
+      /* 크기 */
+      width: 5rem;
+      height: 5rem;
+      margin: .5rem;
+      /* 정렬 */
+      text-align: center;
+      line-height: 5rem;
+      /* 배경 */
+      border-radius: 50%;
+      box-shadow: 5px 5px 5px black;
+      /* 텍스트 */
+      color: white;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    .ball-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 47rem;
+      height: 7rem;
+      margin: .5rem;
+      background-color: white;
+      border-radius: 60px;
+    }
+    .plus {
+      margin: .5rem;
+      text-align: center;
+      line-height: 5rem;
+      background-color: white;
+    }
+    .btn-box {
+      display: flex;
+      justify-content: end;
+      width: 43rem;
+    }
+    button {
+      line-height: 3;
+      margin: 0 0.5rem 1rem;
+      background-color: white;
+      font-size: large;
+      font-weight: bold;
+      border-style: solid;
+      border-radius: 60px;
+      border-color: #666666;
+      font-family: 'Do Hyeon', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="basic">
+    <h1>로또 추천 번호</h1>
+    <div class="btn-box">
+      <button id="lotto-btn">번호 추첨</button>
+      <button id="reset-btn">리셋 하기</button>
+    </div>
+    <div id="result"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const button = document.querySelector('#lotto-btn')
+    button.addEventListener('click', function() {
+      // 컨테이너 생성
+      const ballContainer = document.createElement('div')
+      ballContainer.classList.add('ball-container')
+      // 6개 번호 추첨
+      const numbers = _.sampleSize(_.range(1, 46), 7)
+      console.log(numbers)
+      // 6개 공 생성
+      for (const num of numbers) {
+        const ball = document.createElement('div')
+        ball.classList.add('ball')
+        ball.innerText = num
+        // 공 색 설정
+        if (num <= 10) {
+          ball.style.backgroundColor = '#FFC65D'
+        } else if (num <= 20) {
+          ball.style.backgroundColor = '#4CC3D9'
+        } else if (num <= 30) {
+          ball.style.backgroundColor = '#F16745'
+        } else if (num <= 40) {
+          ball.style.backgroundColor = '#666666'
+        } else {
+          ball.style.backgroundColor = '#7BC8A4'
+        }
+        // 컨테이너에 붙임
+        ballContainer.appendChild(ball)
+        // 보너스 공 플러스 기호 추가
+        if (numbers.indexOf(num) === 5) {
+          const plus = document.createElement('h1')
+          plus.innerText = '+'
+          plus.classList.add('plus')
+          ballContainer.appendChild(plus)
+        }
+      }
+      // 컨테이너를 결과 영역에 붙임 
+      const result = document.querySelector('#result')
+      result.appendChild(ballContainer)
+      const button_2 = document.querySelector('#reset-btn')
+      button_2.addEventListener('click', function() {
+        result.removeChild(ballContainer)
+      })
+    })
+  </script>
+</body>
+</html>
